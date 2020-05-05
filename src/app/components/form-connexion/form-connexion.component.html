@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title  > <h6 class="m-0 font-weight-bold text-primary"> SenTransfertMoney Authentification </h6> </mat-card-title>
+      
+    </mat-card-header>
+  
+    <mat-card-content>
+  
+  
+  <form [formGroup]="formConnexion" (ngSubmit)="onSubmit()" >
+     
+    <mat-form-field class="matinput-full-width" >
+       
+        <input matInput type="text" formControlName="username" placeholder="Nom d'utilisateur"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div *ngIf="f.username.errors.required">Veuillez remplir votre nom d'utilisateur</div>
+        </div>
+      </mat-form-field>
+  
+      <mat-form-field class="matinput-full-width" >
+          
+        <input matInput type="password" formControlName="password" placeholder="Mot de Passe"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Veuillez remplir votre mot de passe</div>
+        </div>
+  
+      </mat-form-field>
+     
+    <div class="form-group">
+        <button type="submit" (click)="onConnexion()" [disabled]="loading" class="btn btn-outline-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Se connecter
+        </button>
+  
+       <span>Vous n'avez pas de compte</span> <a routerLink="/createUser" > cliquez ici</a>
+  </div>
+  
+  </form>
+  
+  
+  
+    </mat-card-content>
+  </mat-card>

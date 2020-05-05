@@ -1,0 +1,29 @@
+.bottom{
+
+    position: relative;
+    top: 60px;  
+}
+.example-card {
+    max-width: 400px;
+    top: 100px;
+    left: 500px;
+    right: 100px;
+    height: 280px;
+  }
+  .example-header-image {
+    background-image: url('src/assets/images/Presi.png');
+    background-size: cover;
+    align-content: space-between;
+    
+  }
+
+  .title{
+    color: slategray;
+    size: 0px;
+    align-content: space-between;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+
+  

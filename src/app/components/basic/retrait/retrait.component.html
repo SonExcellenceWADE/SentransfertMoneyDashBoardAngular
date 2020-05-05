@@ -1,0 +1,132 @@
+<div class="card" 
+style="background-color:rgb(250, 250, 250); 
+bottom: 40px;
+margin-left: 40px;
+margin-right: 40px;
+height: 90px;">
+<table *ngFor="let compte of comptes" >
+ <tbody>
+ <tr>
+<th> Nº du Compte : </th> {{compte.numCompte}} 
+
+<th> Solde Actuel : </th> {{compte.solde}} F CFA 
+</tr>
+</tbody> 
+</table>
+  
+   
+<mat-card>
+
+ <div style="text-align: center; justify-content: space-between;">
+
+ <button type="submit"  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/envoie']"  routerLinkActive="router-link-active" > Envoyer de l'argent </button>
+ <span> <mat-icon > swap_horizontal_circle </mat-icon> </span>
+ <button type="submit"  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/retrait']"  routerLinkActive="router-link-active"  > Retirer de l'argent </button>
+</div>
+
+    
+
+<form [formGroup]="retraitForm" (ngSubmit)="onSubmit()" >
+
+    <!-- recherche par codeEnvoi de la ligne de transaction  block  By Son Excellence WADE-->
+
+    <mat-form-field class="matinput-full-width" >
+
+        <input type="text" matInput placeholder= "Rechercher par Code d'envoi..." formControlName="codeEnvoi" >
+               
+   
+         </mat-form-field>
+
+ <div style="text-align: center;"> INFORMATIONS PERSONNELES DE L'ENVOYEUR </div>
+ 
+ <!-- Prenom Envoyeur  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+    <input type="text" matInput placeholder= "Prénom de l'envoyeur"  [(value)]="transaction.prenomEnvoyeur" readonly >     
+     </mat-form-field>
+
+     
+     <!-- Nom Envoyeur  block  By Son Excellence WADE-->
+
+        <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+            <input type="text" matInput placeholder= "Nom de l'envoyeur"  [(value)]="transaction.nomEnvoyeur" readonly >     
+             
+        </mat-form-field>
+
+       <!-- Telephone Envoyeur  block  By Son Excellence WADE-->
+     
+         <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+            <input type="text" matInput placeholder= "Téléphone de l'envoyeur"  [(value)]="transaction.telEnvoyeur" readonly >     
+             
+        </mat-form-field>
+
+        <!-- Montant Envoie block  By Son Excellence WADE-->
+
+      <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+  
+        <input type="number" matInput placeholder="Montant à envoyer" [(value)]="transaction.montantEnvoi" readonly >
+        
+    </mat-form-field>
+
+    <div style="text-align: center;"> INFORMATIONS PERSONNELLES DU BENEFICIAIRE </div>
+
+
+    <!-- Prenom Beneficiaire  block  By Son Excellence WADE-->
+
+<mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+    <input type="text" matInput placeholder= "Prénom du Bénéficiaire" [(value)]="transaction.prenomBeneficiaire" readonly >
+        
+     </mat-form-field>
+
+     <!-- Nom Beneficiare  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+    <input type="text" matInput placeholder= "Nom du Bénéficiaire" [(value)]="transaction.nomBeneficiaire" readonly >    
+        
+     </mat-form-field>
+
+     <!-- Telephone Beneficiaire  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width" *ngIf="transaction">
+
+    <input type="text" matInput placeholder= "Téléphone du Bénéficiaire" [(value)]="transaction.telBeneficiaire" readonly >
+        
+     </mat-form-field>
+
+
+      <!-- Nº carte d'identite Beneficiaire  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width" *ngIf="transaction" >
+
+    <input type="text" matInput placeholder= "Nº Carte d'identité du Bénéficiaire" formControlName="cinBeneficiaire" required [ngClass]="{'is-invalid': submitted && f.cinBeneficiaire.errors }" [(ngModel)]="transaction.cinBeneficiaire"  >
+
+    <!-- Telephone Beneficaire error block  By Son Excellence WADE-->
+    <div *ngIf="submitted && f.cinBeneficiaire.errors && f.cinBeneficiaire.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.cinBeneficiaire.errors.required"> Le champ Nº Carte d'identité du Bénéficiaire ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+        
+             <div>
+                                           
+        <button type="submit" class="btn btn-outline-primary" (click)="onRetrait()" > Retirer </button>
+        
+        <button type="reset" mat-button  class="btn btn-outline-primary" (click)="onClose()" > Annuler </button>
+
+        <button type="submit" mat-button  class="btn btn-outline-primary" onclick="window.location.href = 'http://127.0.0.1:8000/recuTransaction';" > Imprimer </button>
+
+    </div>
+
+</form>
+
+</mat-card>
+
+</div>
+

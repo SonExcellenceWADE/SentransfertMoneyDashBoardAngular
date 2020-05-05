@@ -1,0 +1,17 @@
+<div class="row">
+  
+  <div class="col-sm-6">
+    <app-card [title]="'Geolocalisation Agence SenTransfertMoney'" [classHeader]="true">
+      <span class="code-header">use element <code>agm-marker</code> with <code>agm-map</code> element</span>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker [latitude]="latA" [longitude]="lngA"></agm-marker>
+        <agm-marker [latitude]="21.6776887" [longitude]="71.566261"></agm-marker>
+        <agm-marker [latitude]="22.3220876" [longitude]="73.1030464"></agm-marker>
+        <agm-marker [latitude]="23.0201818" [longitude]="72.4396587"></agm-marker>
+        <agm-marker [latitude]="22.2734719" [longitude]="70.7512565"></agm-marker>
+      </agm-map>
+    </app-card>
+  </div>
+
+</div>

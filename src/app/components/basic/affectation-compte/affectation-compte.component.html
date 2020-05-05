@@ -1,0 +1,67 @@
+<div class="content-container">
+  <mat-icon id="close-icon" (click)="onClose()"></mat-icon>
+  </div> 
+
+<div class="search-div"> 
+  <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/listUser']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+    <mat-icon>list</mat-icon>Liste Utilisateurs Partenaires
+  </button>
+
+<button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/listCompte']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+  <mat-icon>list</mat-icon>Liste Comptes Partenaires
+</button>
+
+</div>
+
+<mat-card class="formCompte">
+
+
+    <form [formGroup]="affectationForm" >
+       
+        <mat-form-field class="matfield-width">
+          <mat-label>Date de Debut</mat-label>
+            <input matInput [matDatepicker]="picker1"  formControlName="dateDebut">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>  
+          
+          
+          <mat-form-field  class="matfield-width" >
+            <mat-label>Date de Fin</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dateFin">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+        <!-- Username write block  By Son Excellence WADE-->
+        
+        <mat-form-field class="matinput" *ngIf="user" >
+                                  
+          <input matInput [(ngModel)]="user.username" placeholder="Utilisateur à Affecter" formControlName="userAffectCompte"  readonly >
+
+         </mat-form-field>
+
+       <!-- Nº de Compte write block  By Son Excellence WADE-->
+        
+     
+       <mat-form-field class="matinput"  >
+
+        <input matInput  placeholder="Compte à affecter" formControlName="compte"  >
+
+       </mat-form-field>
+
+       <div>
+
+            <button type="submit" class="btn btn-outline-primary"  (click)="onAffecteCompte()" > Affecter Compte </button>
+
+               
+            <button type="reset" mat-button  class="btn btn-outline-primary" (click)="onClose()" > Annuler </button>
+
+        </div>
+
+
+        </form>
+
+
+</mat-card>
+

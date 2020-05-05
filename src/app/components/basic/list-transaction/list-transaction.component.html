@@ -1,0 +1,172 @@
+   
+
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Liste des Transactions du Systeme SenTransfertMoney</h6>
+</div>
+
+<div class="search-div">
+
+    <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/envoie']"  routerLinkActive="router-link-active" >
+        <mat-icon>add</mat-icon>Envoyer/Recevoir de l'argent
+    </button>
+</div>
+
+<mat-form-field class="search-form-field" >
+    <input matInput [(ngModel)]="searchKey" placeholder="Rechercher un Compte Partenaire " autocomplete="off" (keyup)="applyFilter($event.target.value)" >
+
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+</mat-form-field>
+
+  <div class="mat-elevation-z8" >
+
+  <mat-table [dataSource]="listData" matSort>
+
+    <ng-container matColumnDef = "prenomEnvoyeur">
+
+     <mat-header-cell *matHeaderCellDef mat-sort-header > Prénom de l'envoyeur  </mat-header-cell>
+     
+     <mat-cell *matCellDef="let element"> {{ element.prenomEnvoyeur  }}</mat-cell> 
+
+    </ng-container>
+
+    <ng-container matColumnDef = "nomEnvoyeur">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Nom de l'envoyeur </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.nomEnvoyeur  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "telEnvoyeur">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Téléphone de l'Envoyeur </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.telEnvoyeur  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "montantEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Montant  à envoyer (FCFA)   </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.montantEnvoi  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "fraisEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Frais d'envoi (FCFA)  </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.fraisEnvoi  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "totalEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Total TTC (FCFA) </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.totalEnvoi }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "codeEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Code d'envoi </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.codeEnvoi }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "dateEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Date d'envoi </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.dateEnvoi | date:'yyyy-MM-dd HH:mm:ss' }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "compteEnvoi">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Compte d'envoi </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.compteEnvoi.numCompte}} </mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "prenomBeneficiaire">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Prénom du Bénéficiaire </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.prenomBeneficiaire}} </mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "nomBeneficiaire">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Nom du Bénéficiaire </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.nomBeneficiaire}} </mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "telBeneficiaire">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Téléphone du Bénéficiaire </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.telBeneficiaire}} </mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "cinBeneficiaire">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Nº Carte d'identité du Bénéficiaire </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.cinBeneficiaire}} </mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "dateRetrait">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Date de Retrait </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.dateRetrait | date:'yyyy-MM-dd HH:mm:ss' }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "compteRetrait">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Compte du Retrait </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.compteRetrait.numCompte}} </mat-cell> 
+   
+       </ng-container>
+
+
+       <ng-container matColumnDef = "status">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Status </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell> 
+   
+       </ng-container>
+ 
+         <ng-container matColumnDef = "loading">
+      <mat-footer-cell *matFooterCellDef  colspan="6">En Chargement... Veuillez patienter s'il vous plait !!!</mat-footer-cell>
+             </ng-container>
+    
+  <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null }"></mat-footer-row>
+  </mat-table>
+
+  <mat-paginator 
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+
+  </div> 

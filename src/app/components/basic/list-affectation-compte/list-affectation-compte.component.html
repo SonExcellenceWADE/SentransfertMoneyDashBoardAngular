@@ -1,0 +1,80 @@
+<div class="content-container">
+    <mat-icon id="close-icon" (click)="closeDialog()"></mat-icon>
+    </div>    
+
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Liste des Affectations de Compte du Systeme SenTransfertMoney</h6>
+</div>
+
+<div class="search-div">
+
+    <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/affectationCompte']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+        <mat-icon>add</mat-icon>Affecter Compte
+    </button>
+</div>
+
+<mat-form-field class="search-form-field" >
+    <input matInput [(ngModel)]="searchKey" placeholder="Rechercher un Compte Partenaire " autocomplete="off" (keyup)="applyFilter($event.target.value)" >
+
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+</mat-form-field>
+
+  <div class="mat-elevation-z8" >
+
+  <mat-table [dataSource]="listData" matSort>
+
+    <ng-container matColumnDef = "userAffectCompte">
+
+     <mat-header-cell *matHeaderCellDef mat-sort-header > Utilisateur Affecté </mat-header-cell>
+     
+     <mat-cell *matCellDef="let element"> {{ element.userAffectCompte.username }}</mat-cell> 
+
+    </ng-container>
+
+    <ng-container matColumnDef = "compte">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Compte </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.compte.numCompte  }}</mat-cell> 
+   
+       </ng-container>
+
+
+       <ng-container matColumnDef = "dateDebut">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Date de Début </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.dateDebut | date:'yyyy-MM-dd HH:mm:ss' }}</mat-cell> 
+   
+       </ng-container>
+
+
+       <ng-container matColumnDef = "dateFin">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Date de Fin </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.dateFin | date:'yyyy-MM-dd HH:mm:ss' }}</mat-cell> 
+   
+       </ng-container>
+
+ 
+         <ng-container matColumnDef = "loading">
+      <mat-footer-cell *matFooterCellDef  colspan="6">En Chargement... Veuillez patienter s'il vous plait !!!</mat-footer-cell>
+             </ng-container>
+    
+  <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null }"></mat-footer-row>
+  </mat-table>
+
+  <mat-paginator 
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+
+  </div> 

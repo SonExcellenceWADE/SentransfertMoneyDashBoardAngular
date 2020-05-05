@@ -1,0 +1,180 @@
+
+ <div class="content-container">
+  <mat-icon id="close-icon" (click)="onClose()"></mat-icon>
+  </div>
+
+<mat-card class="formCompte">
+  
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+  
+      <mat-step [stepControl]="registerForm" errorMessage = "Veuillez saisir votre login et mot de passe" >
+  
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+  
+              <ng-template matStepLabel> Login et Mot de Passe </ng-template>
+             
+               <!-- Username write block  By Son Excellence WADE-->
+              <mat-form-field class="matinput-full-width" >
+                            
+                  <input matInput placeholder="nom d'utilisateur" formControlName="username" required [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+  
+               <!-- Username error block  By Son Excellence WADE-->
+               <div *ngIf="submitted && f.username.errors && f.username.touched" class="invalid-feedback">
+  
+                <div *ngIf="f.username.errors.required"> Le champ nom d'utilisateur ne peut pas être vide  </div>
+            
+        </div>
+
+              </mat-form-field>
+  
+            
+  
+            <!-- Password write block  By Son Excellence WADE-->
+  
+              <mat-form-field class="matinput-full-width" >
+                   
+              <input type="password" matInput  placeholder=" mot de passe" formControlName="password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+
+               <!-- Password error block  By Son Excellence WADE-->
+  
+               <div *ngIf="submitted && f.password.errors && f.password.touched" class="invalid-feedback">
+               
+                <div *ngIf="f.password.errors.required" > Le champ mot de passe ne peut pas être vide  </div>
+    
+                Le mot de passe doit comporter plus de 5 caractères 
+             </div>
+              
+              </mat-form-field> 
+  
+         
+               <!-- ConfirmPassword write block  By Son Excellence WADE-->
+  
+              <mat-form-field class="matinput-full-width" >
+                  
+              <input type="password" matInput  placeholder="Comfirmez mot de passe" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+
+                <!-- ConfirmPassword error block  By Son Excellence WADE-->
+  
+                <div *ngIf="submitted && f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
+               
+                <div *ngIf="f.confirmPassword.errors.required" > Le champ Confirmation de mot de passe ne peut pas être vide  </div>
+     
+                Le mot de passe doit comporter plus de 5 caractères 
+                 
+                </div>
+             
+              </mat-form-field> 
+  
+             
+  
+              <div>
+  
+                  <button mat-button matStepperNext  class="btn btn-outline-primary" > Suivant </button>
+              </div>
+          </form>
+      </mat-step>
+  
+      <mat-step [stepControl]="registerForm"  errorMessage = "Veuillez saisir les champs requis" >
+  
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+  
+              <ng-template matStepLabel > Informations Supplémentaires</ng-template>
+  
+              <mat-form-field class="matinput-full-width" >
+  
+               <!-- Prenom write block  By Son Excellence WADE-->
+  
+                  <input matInput placeholder="prenom" formControlName="prenom" required [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+
+                   <!-- Prenom error block  By Son Excellence WADE-->
+  
+                   <div *ngIf="submitted && f.prenom.errors && f.prenom.touched" class="invalid-feedback">
+               
+                <div *ngIf="f.prenom.errors.required" > Le champ prénom ne peut pas être vide  </div>
+         
+                </div>
+                  
+              </mat-form-field> 
+  
+             
+  
+               <!-- Nom write block  By Son Excellence WADE-->
+  
+              <mat-form-field class="matinput-full-width" >
+  
+                  <input type="text" matInput placeholder="nom" formControlName="nom" required [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+                   
+                  <!-- Nom error block  By Son Excellence WADE-->
+  
+                  <div *ngIf="submitted && f.nom.errors && f.nom.touched" class="invalid-feedback">
+               
+                <div *ngIf="f.nom.errors.required" > Le champ nom ne peut pas être vide  </div>
+         
+                </div>
+  
+              </mat-form-field> 
+  
+  
+  
+              <mat-form-field class="matinput-full-width" >
+  
+          <input type="text" matInput placeholder="email" formControlName="email" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+
+          <!-- Email error block By Son Excellence WADE -->
+  
+          <div *ngIf="submitted && f.email.errors && f.email.touched" class="invalid-feedback">
+  
+            <div *ngIf="f.email.errors.required" > Le champ e-mail ne peut pas être vide  </div>
+        
+            <div *ngIf="f.email.errors?.pattern"  > Vous êtes entrain de saisir un e-mail incorrect  </div>
+            
+        </div> 
+  
+   </mat-form-field> 
+  
+             
+      <!-- Role write block By Son Excellence WADE -->
+  
+          <mat-form-field class="matinput-full-width" >
+  
+              <mat-label>Role</mat-label>
+  
+              <mat-select formControlName="userRole"  >
+                  
+                <mat-option *ngFor="let userRole of role " [value]="userRole.id">
+                  {{ userRole.nameRole  }}
+                </mat-option>
+  
+              </mat-select>
+  
+            </mat-form-field>
+  
+              <div>
+                  <button mat-button matStepperPrevious class="btn btn-outline-primary"> Retour</button>
+                  <button mat-button matStepperNext  class="btn btn-outline-primary"> Suivant </button>
+              </div>
+          </form>
+      </mat-step>
+  
+  
+      <mat-step>
+          <ng-template matStepLabel>Terminé</ng-template> 
+         <div class="done"> <p> Vous avez maintenant terminé. </p> </div>
+          <div>
+              <!-- <button mat-button matStepperPrevious class="btn btn-outline-secondary" > Retour</button> -->
+             
+              <button type="submit" class="btn btn-outline-primary"  (click)="onRegister()">Créer utilisateur </button>
+               
+                 
+              <button mat-button (click)="stepper.reset()" class="btn btn-outline-primary" > Annuler</button>
+          
+          </div>
+  
+        
+      </mat-step>
+  
+  </mat-horizontal-stepper>
+ 
+</mat-card>
+  
+

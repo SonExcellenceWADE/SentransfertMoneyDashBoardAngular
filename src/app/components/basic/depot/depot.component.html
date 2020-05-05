@@ -1,0 +1,51 @@
+
+<div class="content-container">
+    <mat-icon id="close-icon" (click)="onClose()"></mat-icon>
+    </div> 
+
+    <div class="search-div"> 
+        <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/listCompte']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+        <mat-icon>list</mat-icon>Liste Comptes Partenaires
+        </button>
+  </div>
+
+<mat-card class="formCompte">
+
+    <form [formGroup]="depotForm"  >
+         
+        <!-- NumCompte par recherche liste Compte partenaire  block  By Son Excellence WADE-->
+
+    <mat-form-field class="matinput-full-width" *ngIf="compte"  >
+
+     <input type="text" matInput placeholder= " Nº de Compte Partenaire par recherche..." formControlName="compte" [(ngModel)]="compte.numCompte">
+            
+
+      </mat-form-field>
+
+
+          <!-- Montant Depot block  By Son Excellence WADE-->
+
+      <mat-form-field class="matinput-full-width" >
+  
+
+        <input type="number" matInput placeholder="Montant de Depot" formControlName="montantDepot" >
+               
+   
+         </mat-form-field>
+
+
+         <div>
+                   
+                           
+            <button type="submit" class="btn btn-outline-primary"   (click)="onDepot()" > Déposer </button>
+
+               
+            <button type="reset" mat-button  class="btn btn-outline-primary" (click)="onClose()" > Annuler </button>
+
+        </div>
+
+
+        </form>
+
+
+</mat-card>

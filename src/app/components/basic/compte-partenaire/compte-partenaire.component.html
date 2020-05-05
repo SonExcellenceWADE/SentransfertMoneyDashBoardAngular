@@ -1,0 +1,336 @@
+ 
+ <div class="content-container">
+  <mat-icon id="close-icon" (click)="onClose()"></mat-icon>
+  </div> 
+     <mat-card class="formCompte">
+    
+        <mat-horizontal-stepper labelPosition="bottom" #stepper  >
+      
+          <mat-step [stepControl]="compteForm" errorMessage = "Veuillez saisir les infos du Partenaire" >
+      
+              <form [formGroup]="compteForm">
+                  
+                <div class="row " formGroupName="partenaire"  >
+      
+                  <ng-template matStepLabel class="stepper-form"> Partenaire </ng-template>
+                 
+                   <!-- Ninea write block  By Son Excellence WADE-->
+                  <mat-form-field class="matinput-full-width" >
+                                
+             <input type="text" matInput placeholder="ninea du partenaire" formControlName="ninea" required [ngClass]="{'is-invalid': submitted && f.ninea.errors }"  >
+      
+                   <!-- Ninea error block  By Son Excellence WADE-->
+                   <div *ngIf="submitted && f.ninea.errors && f.ninea.touched" class="invalid-feedback">
+      
+                    <div *ngIf="f.ninea.errors.required"> Le champ ninea ne peut pas être vide  </div>
+                
+                  </div>
+    
+                  </mat-form-field>
+
+
+                   <!-- Rccm write block  By Son Excellence WADE-->
+      
+                   <mat-form-field class="matinput-full-width" >
+                       
+                    <input type="text" matInput  placeholder="registre de commerce" formControlName="rccm" required [ngClass]="{ 'is-invalid': submitted && f.rccm.errors }"  [(ngModel)]="rccm" >
+      
+                     <!-- Rccm error block  By Son Excellence WADE-->
+        
+                     <div *ngIf="submitted && f.rccm.errors && f.rccm.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.rccm.errors.required" > Le champ registre de commerce ne peut pas être vide  </div>
+          
+                   </div>
+                    
+                    </mat-form-field> 
+
+                    <!-- Raison Sociale write block  By Son Excellence WADE-->
+      
+                   <mat-form-field class="matinput-full-width" >
+                       
+                    <input type="text" matInput  placeholder="raison sociale de l'entreprise" formControlName="raisonSociale" required [ngClass]="{ 'is-invalid': submitted && f.raisonSociale.errors }"  [(ngModel)]="raisonSociale" >
+      
+                     <!-- Raison sociale error block  By Son Excellence WADE-->
+        
+                     <div *ngIf="submitted && f.raisonSociale.errors && f.raisonSociale.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.raisonSociale.errors.required" > Le champ raison sociale ne peut pas être vide  </div>
+          
+                   </div>
+                    
+                    </mat-form-field> 
+
+
+                      <!-- Adresse write block  By Son Excellence WADE-->
+      
+                   <mat-form-field class="matinput-full-width" >
+                       
+                    <input type="text" matInput  placeholder="Adresse de l'entreprise" formControlName="adresse" required [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }"  [(ngModel)]="adresse">
+      
+                     <!-- Adresse error block  By Son Excellence WADE-->
+        
+                     <div *ngIf="submitted && f.adresse.errors && f.adresse.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.adresse.errors.required" > Le champ adresse ne peut pas être vide  </div>
+          
+                   </div>
+                    
+                    </mat-form-field> 
+
+
+                     <!-- Capital write block  By Son Excellence WADE-->
+      
+                   <mat-form-field class="matinput-full-width" >
+                       
+                    <input type="text" matInput  placeholder="Capital de l'entreprise " formControlName="capital" required [ngClass]="{ 'is-invalid': submitted && f.capital.errors }"  [(ngModel)]="capital" >
+      
+                     <!-- Capital error block  By Son Excellence WADE-->
+        
+                     <div *ngIf="submitted && f.capital.errors && f.capital.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.capital.errors.required" > Le champ capital ne peut pas être vide  </div>
+          
+                   </div>
+                    
+                    </mat-form-field>
+                    
+                    
+                    <!-- Telephone write block  By Son Excellence WADE-->
+      
+                   <mat-form-field class="matinput-full-width" >
+                       
+                    <input type="text" matInput  placeholder="Telephone de l'entreprise " formControlName="tel" required [ngClass]="{ 'is-invalid': submitted && f.tel.errors }"  [(ngModel)]="tel" >
+      
+                     <!-- Telephone error block  By Son Excellence WADE-->
+        
+                     <div *ngIf="submitted && f.tel.errors && f.tel.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.tel.errors.required" > Le champ telephone ne peut pas être vide  </div>
+          
+                   </div>
+                    
+                    </mat-form-field>
+
+                    <mat-form-field class="matinput-full-width" >
+
+                        <!-- Email write block  By Son Excellence WADE-->
+      
+                        <input type="text" matInput placeholder="email" formControlName="email" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  [(ngModel)]="email" >
+              
+                        <!-- Email error block By Son Excellence WADE -->
+                
+                        <div *ngIf="submitted && f.email.errors && f.email.touched" class="invalid-feedback">
+                
+                          <div *ngIf="f.email.errors.required" > Le champ e-mail ne peut pas être vide  </div>
+                      
+                          <div *ngIf="f.email.errors?.pattern"  > Vous êtes entrain de saisir un e-mail incorrect  </div>
+                          
+                      </div> 
+                
+                 </mat-form-field> 
+
+              <div>
+                <button mat-button matStepperNext  class="btn btn-outline-primary" > Suivant </button>
+            </div>
+
+      </div>
+
+              </form>
+          </mat-step>
+
+
+          <mat-step [stepControl]="compteForm" errorMessage = "Veuillez saisir les infos de l'Utilisateur Partenaire" >
+      
+            <form [formGroup]="compteForm"  >
+           
+    
+         <ng-template matStepLabel class="stepper-form" > Utilisateur Partenaire </ng-template>
+
+         <div class="row " formGroupName="partenaire">
+        
+            <div class="row " formGroupName="userPartenaire">
+               
+            
+              <!-- Username write block  By Son Excellence WADE-->
+              <mat-form-field class="matinput-width" >
+                            
+                <input type="text" matInput placeholder="nom d'utilisateur" formControlName="username" required [ngClass]="{ 'is-invalid': submitted && f.username.errors }"  [(ngModel)]="username" >
+
+             <!-- Username error block  By Son Excellence WADE-->
+             <div *ngIf="submitted && f.username.errors && f.username.touched" class="invalid-feedback">
+
+              <div *ngIf="f.username.errors.required"> Le champ nom d'utilisateur ne peut pas être vide  </div>
+          
+      </div>
+
+            </mat-form-field>
+
+            
+            
+            <!-- Password write block  By Son Excellence WADE-->
+  
+            <mat-form-field class="matinput-width" >
+                   
+                <input type="password" matInput  placeholder=" mot de passe" formControlName="password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }"  [(ngModel)]="password" >
+  
+                 <!-- Password error block  By Son Excellence WADE-->
+    
+                 <div *ngIf="submitted && f.password.errors && f.password.touched" class="invalid-feedback">
+                 
+                  <div *ngIf="f.password.errors.required" > Le champ mot de passe ne peut pas être vide  </div>
+      
+                  Le mot de passe doit comporter plus de 5 caractères 
+               </div>
+                
+                </mat-form-field> 
+    
+           
+                 <!-- ConfirmPassword write block  By Son Excellence WADE-->
+    
+                <mat-form-field class="matinput-width" >
+                    
+                <input type="password" matInput  placeholder="Comfirmez mot de passe" formControlName="confirmPassword"  [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"  [(ngModel)]="password" >
+  
+                  <!-- ConfirmPassword error block  By Son Excellence WADE-->
+    
+                  <div *ngIf="submitted && f.confirmPassword.errors && f.confirmPassword.touched" class="invalid-feedback">
+                 
+                  <div *ngIf="f.confirmPassword.errors.required" > Le champ Confirmation de mot de passe ne peut pas être vide  </div>
+       
+                  Le mot de passe doit comporter plus de 5 caractères 
+                   
+                  </div>
+               
+                </mat-form-field> 
+
+
+
+
+                <mat-form-field class="matinput-width" >
+  
+                    <!-- Prenom write block  By Son Excellence WADE-->
+       
+                       <input type="text" matInput placeholder="prenom" formControlName="prenom" required [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }"  [(ngModel)]="prenom" >
+     
+                        <!-- Prenom error block  By Son Excellence WADE-->
+       
+                        <div *ngIf="submitted && f.prenom.errors && f.prenom.touched" class="invalid-feedback">
+                    
+                     <div *ngIf="f.prenom.errors.required" > Le champ prénom ne peut pas être vide  </div>
+              
+                     </div>
+                       
+                   </mat-form-field> 
+       
+                  
+       
+                    <!-- Nom write block  By Son Excellence WADE-->
+       
+                   <mat-form-field class="matinput-width" >
+       
+                       <input type="text" matInput placeholder="nom" formControlName="nom" required [ngClass]="{ 'is-invalid': submitted && f.nom.errors }"  [(ngModel)]="nom" >
+                        
+                       <!-- Nom error block  By Son Excellence WADE-->
+       
+                       <div *ngIf="submitted && f.nom.errors && f.nom.touched" class="invalid-feedback">
+                    
+                     <div *ngIf="f.nom.errors.required" > Le champ nom ne peut pas être vide  </div>
+              
+                     </div>
+       
+                   </mat-form-field> 
+       
+       
+       
+                   <mat-form-field class="matinput-width" >
+       
+               <input type="text" matInput placeholder="email" formControlName="email" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  [(ngModel)]="emailUser" >
+     
+               <!-- Email error block By Son Excellence WADE -->
+       
+               <div *ngIf="submitted && f.email.errors && f.email.touched" class="invalid-feedback">
+       
+                 <div *ngIf="f.email.errors.required" > Le champ e-mail ne peut pas être vide  </div>
+             
+                 <div *ngIf="f.email.errors?.pattern"  > Vous êtes entrain de saisir un e-mail incorrect  </div>
+                 
+             </div> 
+       
+        </mat-form-field> 
+
+
+       
+     <!-- Role write block By Son Excellence WADE -->
+  
+     <mat-form-field class="matinput-width" >
+  
+        <mat-label>Role</mat-label>
+
+        <mat-select formControlName="userRole" >
+            
+          <mat-option [value]="iriRole"> PARTENAIRE </mat-option>
+
+        </mat-select>
+
+      </mat-form-field> 
+            </div>
+   <div>
+            <button  mat-button matStepperPrevious class="btn btn-outline-primary"> Retour</button>
+            <button mat-button matStepperNext class="btn btn-outline-primary"> Suivant </button>
+        </div>
+         </div>
+         </form>
+               </mat-step>
+
+              <mat-step [stepControl]="compteForm" errorMessage = "Veuillez saisir les infos de l'Utilisateur Partenaire" >
+      
+              <form [formGroup]="compteForm" >
+               
+        
+             <ng-template matStepLabel class="stepper-form" > Compte Partenaire</ng-template>
+        
+                    <mat-form-field class="matinput-full-width" >
+        
+                     <!-- Solde write block  By Son Excellence WADE-->
+        
+                        <input type="number" matInput placeholder="solde du compte" formControlName="solde" required [ngClass]="{ 'is-invalid': submitted && f.solde.errors }" >
+      
+                         <!-- Solde error block  By Son Excellence WADE-->
+        
+                         <div *ngIf="submitted && f.solde.errors && f.solde.touched" class="invalid-feedback">
+                     
+                      <div *ngIf="f.solde.errors.required" > Le champ solde du compte ne peut pas être vide  </div>
+               
+                      </div>
+                        
+                    </mat-form-field> 
+       
+                    <div>
+                        <button mat-button matStepperPrevious class="btn btn-outline-primary"> Retour</button>
+                        <button mat-button matStepperNext class="btn btn-outline-primary"> Suivant </button>
+                    </div>
+
+                    </form>
+                    </mat-step>
+                    
+                    <mat-step>
+                        <ng-template matStepLabel class="stepper-form" >Terminé</ng-template> 
+
+                       <div class="done"> <p> Vous avez maintenant terminé. </p> </div>
+                        <div>
+                   
+                           
+                            <button type="submit" class="btn btn-outline-primary"  (click)="onComptePartenaire()" onclick="window.location.href = 'http://127.0.0.1:8000/contrat';"> Créer Compte </button>
+   
+                               
+                            <button mat-button (click)="stepper.reset()" class="btn btn-outline-primary" > Annuler </button>
+  
+                        </div>
+
+                    </mat-step>
+                    
+      </mat-horizontal-stepper>
+    </mat-card>
+     
+

@@ -1,0 +1,74 @@
+
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Liste des Dépôts du Systeme SenTransfertMoney</h6>
+</div>
+
+<div class="search-div">
+
+    <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/faireDepot']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+        <mat-icon>add</mat-icon>Faire Dépôt
+    </button>
+
+    <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/listCompte']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+       <mat-icon>list</mat-icon>Liste Comptes Partenaires
+    </button>
+</div>
+
+<mat-form-field class="search-form-field" >
+    <input matInput [(ngModel)]="searchKey" placeholder="Rechercher un depot " autocomplete="off" (keyup)="applyFilter($event.target.value)" >
+
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+</mat-form-field>
+
+  <div class="mat-elevation-z8" >
+
+  <mat-table [dataSource]="listData" matSort>
+
+    <ng-container matColumnDef = "compte">
+
+     <mat-header-cell *matHeaderCellDef mat-sort-header > Nº Compte Partenaire </mat-header-cell>
+     
+     <mat-cell *matCellDef="let element"> {{ element.compte.numCompte  }}</mat-cell> 
+
+    </ng-container>
+
+
+    <ng-container matColumnDef = "dateDepot">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Date de Depot </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.dateDepot | date:'yyyy-MM-dd HH:mm:ss' }}</mat-cell> 
+   
+       </ng-container>
+
+
+    
+       <ng-container matColumnDef = "montantDepot">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Montant de Depot </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.montantDepot  }}</mat-cell> 
+   
+       </ng-container>
+
+ 
+         <ng-container matColumnDef = "loading">
+      <mat-footer-cell *matFooterCellDef  colspan="6">En Chargement... Veuillez patienter s'il vous plait !!!</mat-footer-cell>
+             </ng-container>
+    
+  <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null }"></mat-footer-row>
+  </mat-table>
+
+  <mat-paginator 
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+
+  </div> 

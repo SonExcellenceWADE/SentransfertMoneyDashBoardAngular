@@ -1,0 +1,39 @@
+body{
+    background-color: darken($color: #E1F5FE, $amount: 0);
+}
+.done{
+    color: #3071D4 ;
+      
+}
+
+p {
+    animation-duration: 3s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+
+  .bottom{
+
+    position: relative;
+    top: 60px;  
+}
+.example-card {
+    max-width: 800px;
+    top: 90px;
+    left: 300px;
+    right: 500px;
+    height: 500px;
+    background-color:#FFFFFF  ;
+  }
+  
+
+  .title{
+    color: slategray;
+    size: 0px;
+    align-content: space-between;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  

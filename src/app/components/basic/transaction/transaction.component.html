@@ -1,0 +1,165 @@
+<div class="card" 
+style="background-color:rgb(250, 250, 250); 
+bottom: 30px;
+margin-left: 40px;
+margin-right: 40px;
+height: 70px;">
+
+<div class="content-container">
+  <mat-icon id="close-icon" (click)="onClose()"></mat-icon>
+  </div> 
+
+<table *ngFor="let compte of comptes" >
+ <tbody>
+ <tr>
+<th> Nº du Compte : </th> {{compte.numCompte}} 
+
+<th> Solde Actuel : </th> {{compte.solde}} F CFA 
+</tr>
+</tbody> 
+</table>
+  
+   
+<mat-card>
+
+ <div style="text-align: center; justify-content: space-between;">
+
+ <button type="submit"  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/envoie']"  routerLinkActive="router-link-active" > Envoyer de l'argent </button>
+ <span> <mat-icon > swap_horizontal_circle </mat-icon> </span>
+ <button type="submit"  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/retrait']"  routerLinkActive="router-link-active" > Retirer de l'argent </button>
+</div>
+
+    
+
+<form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" >
+
+ <div style="text-align: center;"> INFORMATIONS PERSONNELLES DE L'ENVOYEUR </div>
+ 
+ <!-- Prenom Envoyeur  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Prénom de l'envoyeur" formControlName="prenomEnvoyeur" required [ngClass]="{'is-invalid': submitted && f.prenomEnvoyeur.errors }" >
+
+    <!-- Prenom Envoyeur error block  By Son Excellence WADE-->
+    <div *ngIf="submitted && f.prenomEnvoyeur.errors && f.prenomEnvoyeur.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.prenomEnvoyeur.errors.required"> Le champ Prénom de l'envoyeur ne peut pas être vide  </div>
+  
+    </div>
+
+        
+     </mat-form-field>
+
+     <!-- Nom Envoyeur  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Nom de l'envoyeur" formControlName="nomEnvoyeur" required [ngClass]="{'is-invalid': submitted && f.nomEnvoyeur.errors }" >     
+
+     <!-- Nom Envoyeur error block  By Son Excellence WADE-->
+     <div *ngIf="submitted && f.nomEnvoyeur.errors && f.nomEnvoyeur.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.nomEnvoyeur.errors.required"> Le champ Nom de l'envoyeur ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+
+     <!-- Telephone Envoyeur  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Téléphone de l'envoyeur" formControlName="telEnvoyeur" required [ngClass]="{'is-invalid': submitted && f.telEnvoyeur.errors }" >
+
+
+     <!-- Telephone Envoyeur error block  By Son Excellence WADE-->
+     <div *ngIf="submitted && f.telEnvoyeur.errors && f.telEnvoyeur.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.telEnvoyeur.errors.required"> Le champ Téléphone de l'envoyeur ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+
+      <!-- Montant Envoie block  By Son Excellence WADE-->
+
+      <mat-form-field class="matinput-full-width" >
+  
+
+        <input type="number" matInput placeholder="Montant à envoyer" formControlName="montantEnvoi" required [ngClass]="{'is-invalid': submitted && f.montantEnvoi.errors }" >
+
+         <!-- Montant Envoi error block  By Son Excellence WADE-->
+     <div *ngIf="submitted && f.montantEnvoi.errors && f.montantEnvoi.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.montantEnvoi.errors.required"> Le champ Montant à envoyer ne peut pas être vide  </div>
+  
+    </div>
+               
+   
+         </mat-form-field>
+
+ <div style="text-align: center;"> INFORMATIONS PERSONNELLES DU BENEFICIAIRE </div>
+     
+
+<!-- Prenom Beneficiaire  block  By Son Excellence WADE-->
+
+<mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Prénom du Bénéficiaire" formControlName="prenomBeneficiaire" required [ngClass]="{'is-invalid': submitted && f.prenomBeneficiaire.errors }" >
+
+    <!-- Prenom Beneficaire error block  By Son Excellence WADE-->
+    <div *ngIf="submitted && f.prenomBeneficiaire.errors && f.prenomBeneficiaire.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.prenomBeneficiaire.errors.required"> Le champ Prénom du Bénéficiaire ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+
+     <!-- Nom Beneficiare  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Nom du Bénéficiaire" formControlName="nomBeneficiaire"  required [ngClass]="{'is-invalid': submitted && f.nomBeneficiaire.errors }">    
+    
+    <!-- Nom Beneficaire error block  By Son Excellence WADE-->
+    <div *ngIf="submitted && f.nomBeneficiaire.errors && f.nomBeneficiaire.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.nomBeneficiaire.errors.required"> Le champ Nom du Bénéficiaire ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+
+     <!-- Telephone Beneficiaire  block  By Son Excellence WADE-->
+
+  <mat-form-field class="matinput-full-width">
+
+    <input type="text" matInput placeholder= "Téléphone du Bénéficiaire" formControlName="telBeneficiaire" required [ngClass]="{'is-invalid': submitted && f.telBeneficiaire.errors }" >
+
+    <!-- Telephone Beneficaire error block  By Son Excellence WADE-->
+    <div *ngIf="submitted && f.telBeneficiaire.errors && f.telBeneficiaire.touched" class="invalid-feedback">
+      
+      <div *ngIf="f.telBeneficiaire.errors.required"> Le champ Téléphone du Bénéficiaire ne peut pas être vide  </div>
+  
+    </div>
+        
+     </mat-form-field>
+
+     <div>
+                                           
+        <button type="submit" class="btn btn-outline-primary"  (click)="onEnvoi()" > Envoyer </button>
+        
+        <button type="reset" mat-button  class="btn btn-outline-primary"  (click)="onClose()" > Annuler </button>
+
+        <button type="submit" mat-button  class="btn btn-outline-primary"  onclick="window.location.href = 'http://127.0.0.1:8000/recuTransaction';" > Imprimer </button>
+
+    </div>
+
+</form>
+
+</mat-card>
+
+</div>
+

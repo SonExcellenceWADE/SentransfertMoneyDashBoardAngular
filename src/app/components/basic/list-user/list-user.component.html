@@ -1,0 +1,114 @@
+<div class="content-container">
+    <mat-icon id="close-icon" (click)="closeDialog()"></mat-icon>
+    </div>      
+
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Liste des Utilisateurs du Systeme SenTransfertMoney</h6>
+</div>
+
+<div class="search-div">
+
+    <button mat-raised-button class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/createUser']" routerLinkActive="router-link-active" (click)="closeDialog()" >
+        <mat-icon>add</mat-icon>Ajouter Utilisateur
+    </button>
+</div>
+
+<mat-form-field class="search-form-field" >
+    <input matInput [(ngModel)]="searchKey" placeholder="Rechercher un Utilisateur " autocomplete="off" (keyup)="applyFilter($event.target.value)" >
+
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button>
+
+</mat-form-field>
+
+  <div class="mat-elevation-z8" >
+
+  <mat-table [dataSource]="listData" matSort>
+
+    <ng-container matColumnDef = "username">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Nom d'utilisateur</mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.username  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "prenom">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Prenom</mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.prenom  }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "nom">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Nom </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{ element.nom }}</mat-cell> 
+   
+       </ng-container>
+
+       <ng-container matColumnDef = "email">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Email </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell> 
+   
+       </ng-container>
+
+
+       <ng-container matColumnDef = "roles">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Roles </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> {{element.roles}} </mat-cell> 
+   
+       </ng-container>
+
+
+       <ng-container matColumnDef = "status">
+
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Status </mat-header-cell>
+        
+        <mat-cell *matCellDef="let element"> 
+         
+            <mat-slide-toggle class="slide"  (change)="changeStatus(element.id,element.isActive)" [(ngModel)]="element.isActive" >
+                <span class="badge badge-pill badge-success" *ngIf="element.isActive == true "> Activé </span>
+                <span class="badge badge-pill badge-danger" *ngIf="element.isActive == false ">Bloqué </span>
+            </mat-slide-toggle>
+    
+        </mat-cell> 
+   
+       </ng-container> 
+       
+       <ng-container matColumnDef = "actions">
+
+        <mat-header-cell *matHeaderCellDef  colspan="4" > Actions  </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <button  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/updateUser', element.id]" routerLinkActive="router-link-active" (click)="closeDialog()" > <mat-icon>edit</mat-icon></button>
+            <button  class="btn btn-outline-primary btn-sm" [routerLink]="['/basic/affectationCompte?affect', element.id]"  routerLinkActive="router-link-active" (click)="closeDialog()" > <mat-icon>launch</mat-icon></button>
+        </mat-cell>
+         </ng-container>
+ 
+         <ng-container matColumnDef = "loading">
+      <mat-footer-cell *matFooterCellDef  colspan="6">En Chargement... Veuillez patienter s'il vous plait !!!</mat-footer-cell>
+             </ng-container>
+    
+  <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null }"></mat-footer-row>
+  </mat-table>
+
+  <mat-paginator 
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+
+  </div> 
+
+
+

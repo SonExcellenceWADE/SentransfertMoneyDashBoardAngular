@@ -1,0 +1,44 @@
+.imagePreview {
+    width: 180px;
+    height: 140px;
+    border-radius: 50%;
+    right: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.flex {
+    position: absolute;
+    left: 18%;
+    right: 2%;
+    top: 59px;
+}
+
+.card-body {
+    position: relative;
+    width: 100%;
+}
+
+.done{
+    color: #3071D4;
+      
+}
+
+
+.bottom{
+
+    position: relative;
+    top: 60px;  
+}
+.example-card {
+    max-width: 800px;
+    top: 90px;
+    left: 300px;
+    right: 500px;
+    height: 500px;
+    background-color:#FFFFFF  ;
+  }
+  

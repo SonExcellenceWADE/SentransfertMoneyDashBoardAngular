@@ -1,0 +1,155 @@
+
+  <mat-card class="formCompte">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+  
+      <mat-step [stepControl]="registerForm"  >
+  
+          <form [formGroup]="imageForm">
+  
+            <ng-template matStepLabel> Ajouter un Photo de Profile</ng-template>
+             
+               <!-- Username write block  By Son Excellence WADE-->
+              <!-- <mat-form-field class="matinput-full-width" > -->
+                <div>
+                    <img [src]="thumbnail" class="imagePreview">
+                </div>  
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" (change)="upload($event)" name="imageProfile" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Veuillez choisir une image de Profile...</label>
+                        </div>
+                    </div>
+                  <div> <button mat-button matStepperNext  class="btn btn-outline-primary"> Suivant </button> </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="updateGroup"  >
+  
+                <form [formGroup]="updateGroup" (ngSubmit)="onSubmit()" >
+        
+                    <ng-template matStepLabel> Login </ng-template>
+                   
+                     <!-- Username write block  By Son Excellence WADE-->
+                    <mat-form-field class="matinput-full-width" >
+                                  
+                    <input type="text" matInput [(ngModel)]="user.username"  placeholder="nom d'utilisateur" formControlName="username" required  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
+
+                        
+               <!-- Username error block  By Son Excellence WADE-->
+               <div *ngIf="submitted && f.username.errors && f.username.touched" class="invalid-feedback">
+  
+              <div *ngIf="f.username.errors.required"> Le champ nom d'utilisateur ne peut pas être vide  </div>
+            
+              </div>
+        
+                    </mat-form-field>
+
+                    <div>
+                        <button mat-button matStepperPrevious class="btn btn-outline-primary"  > Retour</button>
+                        <button mat-button matStepperNext  class="btn btn-outline-primary" > Suivant </button>
+                    </div>
+
+                    </form>
+                    </mat-step>
+
+             <mat-step [stepControl]="updateGroup" >
+  
+                <form [formGroup]="updateGroup" (ngSubmit)="onSubmit()" >
+        
+                    <ng-template matStepLabel > Informations Supplémentaires</ng-template>
+        
+                    <mat-form-field class="matinput-full-width" >
+        
+                     <!-- Prenom write block  By Son Excellence WADE-->
+        
+                        <input type="text" matInput [(ngModel)]="user.prenom" placeholder="prenom" formControlName="prenom" required [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" >
+                        
+                         <!-- Prenom error block  By Son Excellence WADE-->
+  
+                   <div *ngIf="submitted && f.prenom.errors && f.prenom.touched" class="invalid-feedback">
+               
+                    <div *ngIf="f.prenom.errors.required" > Le champ prénom ne peut pas être vide  </div>
+             
+                    </div>
+
+                    </mat-form-field> 
+        
+                     <!-- Nom write block  By Son Excellence WADE-->
+        
+                    <mat-form-field class="matinput-full-width" >
+        
+                        <input   type="text" matInput [(ngModel)]="user.nom"  placeholder="nom" formControlName="nom" required [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" >
+        
+                        <!-- Nom error block  By Son Excellence WADE-->
+  
+                  <div *ngIf="submitted && f.nom.errors && f.nom.touched" class="invalid-feedback">
+               
+                    <div *ngIf="f.nom.errors.required" > Le champ nom ne peut pas être vide  </div>
+             
+                    </div>
+      
+                    </mat-form-field> 
+        
+        
+                    <mat-form-field class="matinput-full-width" >
+        
+                <input type="text" matInput [(ngModel)]="user.email" placeholder="email" formControlName="email" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+
+                <!-- Email error block By Son Excellence WADE -->
+  
+          <div *ngIf="submitted && f.email.errors && f.email.touched" class="invalid-feedback">
+  
+            <div *ngIf="f.email.errors.required" > Le champ e-mail ne peut pas être vide  </div>
+        
+            <div *ngIf="f.email.errors?.pattern"  > Vous êtes entrain de saisir un e-mail incorrect  </div>
+            
+        </div> 
+
+        
+         </mat-form-field> 
+        
+                   
+            <!-- Role write block By Son Excellence WADE -->
+  
+          <mat-form-field class="matinput-full-width" >
+  
+            <mat-label>Role</mat-label>
+
+            <mat-select formControlName="userRole"  >
+                
+              <mat-option *ngFor="let userRole of role " [value]="userRole.id">
+                {{ userRole.nameRole  }}
+              </mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+               
+                <div>
+                    <button mat-button matStepperPrevious class="btn btn-outline-primary"  > Retour</button>
+                    <button mat-button matStepperNext  class="btn btn-outline-primary" > Suivant </button>
+                </div>
+
+              </form>
+              </mat-step>
+
+              <mat-step>
+                <ng-template matStepLabel>Terminé</ng-template> 
+               <div class="done"> <p> Vous avez maintenant terminé. </p> </div>
+                <div>
+                    <!-- <button mat-button matStepperPrevious class="btn btn-outline-secondary" > Retour</button> -->
+                   
+                    <button type="submit" class="btn btn-outline-primary"  (click)="updateUser()" > Modifier</button>
+                     
+                       
+                    <button mat-button (click)="stepper.reset()" class="btn btn-outline-primary" > Annuler</button>
+                
+                </div>
+        
+              
+            </mat-step>
+        
+              </mat-horizontal-stepper>
+
+              </mat-card>
+
