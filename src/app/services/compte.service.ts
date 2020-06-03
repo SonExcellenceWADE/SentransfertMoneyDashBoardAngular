@@ -33,7 +33,7 @@ export class CompteService {
   //function pour lister les elements du Compte Partenaire BY Son Excellence WADE
 
   findAllComptes(){
-    return this.http.get<any>(`${environment.apiUrl}/comptes.json`);
+    return this.http.get<any>(`${environment.apiUrl}/comptes/list`);
   }
 
   //function pour lister un element du Compte Partenaire BY SOn Excellence WADE

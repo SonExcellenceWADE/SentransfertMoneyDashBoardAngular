@@ -1,15 +1,48 @@
 <div class="row">
   
-  <div class="col-sm-6">
-    <app-card [title]="'Geolocalisation Agence SenTransfertMoney'" [classHeader]="true">
-      <span class="code-header">use element <code>agm-marker</code> with <code>agm-map</code> element</span>
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="6">
+  <div class="col-sm-12">
+    <app-card [title]="'Géolocalisation Agence SenTransfertMoney SARL'" [classHeader]="true">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         <agm-marker [latitude]="latA" [longitude]="lngA"></agm-marker>
-        <agm-marker [latitude]="21.6776887" [longitude]="71.566261"></agm-marker>
-        <agm-marker [latitude]="22.3220876" [longitude]="73.1030464"></agm-marker>
-        <agm-marker [latitude]="23.0201818" [longitude]="72.4396587"></agm-marker>
-        <agm-marker [latitude]="22.2734719" [longitude]="70.7512565"></agm-marker>
+        
+        <agm-marker [latitude]="14.733497066" [longitude]="-17.442998228">
+
+          <agm-info-window>
+            <h6><strong> SenTranfertMoney Platform</strong></h6>
+            <p>Agence de Grand-Yoff(Dakar)</p>
+          </agm-info-window>   
+
+        </agm-marker>
+        
+        <agm-marker [latitude]="16.0333332" [longitude]="-16.499998">
+
+          <agm-info-window>
+            <h6><strong> SenTranfertMoney Platform </strong></h6>
+            <p>Agence de Saint-Louis</p>
+          </agm-info-window> 
+
+        </agm-marker>
+      
+       <agm-marker  [latitude]= "16.258485" [longitude]="-15.884747">
+
+        <agm-info-window>
+            <h6><strong> SenTranfertMoney Platform </strong></h6>
+            <p>Agence de Dagana</p>
+          </agm-info-window>
+
+       </agm-marker> 
+
+       <agm-marker  [latitude]= "14.83333" [longitude]="-17.0999996">
+
+        <agm-info-window>
+          <h6><strong> SenTranfertMoney Platform </strong></h6>
+          <p>Agence de Thies</p>
+        </agm-info-window>
+
+       </agm-marker> 
+       
+       
       </agm-map>
     </app-card>
   </div>

@@ -71,47 +71,38 @@ thumbail;
      
      }
    )
-/* 
-    //Function pour afficher la liste d'un Compte Partenaire selectionner BY Son Excellence WADE
-   this.compteService.findCompteById(6)
-   .subscribe(
-     data => {
-       this.compte = data;
-       console.log(this.compte);
 
-     }
-   ) */
-
-
-  //Appel de Function de chargement des infos Partenaire By Son Excellence WADE
- this.onChanges();
+  //Appel de Function de chargement des infos Comptes  By Son Excellence WADE
+ this.dataCompteByNumCompte();
 }
 
-  onChanges(){
+  /* onChanges(){
   this.affectationForm.get('compte').valueChanges.subscribe(
     
   val => {
     if(val){
-      this.dataCompteByNumCompte(val);
+      this.dataCompteByNumCompte();
     } 
     }
  );
 } 
-
+ */
   //Recuperation des donnees du Compte Partenaire par recherche de Nº de Compte By Son Excellence WADE
 
-dataCompteByNumCompte(numCompte){
+dataCompteByNumCompte(){
 
-  //recupereration du ninea saisie dans le formulaire By Son Excellence WADE;
-  this.compteService.searchByNumCompte(numCompte).subscribe(
+  //recupereration du numero de compte saisie dans le formulaire By Son Excellence WADE;
+  this.compteService.searchByNumCompte(this.affectationForm.value.compte).subscribe(
     data => {
       
       //On test si la recherche par Nº de Compte est vrai
        if(data["hydra:member"][0])
        {
+         
            //Recuperation de l'iri du Compte Partenaire
           this.iriCompte = data["hydra:member"][0]['@id'];
-          console.log(this.iriCompte);
+          console.log(this.affectationForm.value.compte);
+          //console.log(this.iriCompte);
        }else{
          alert("Ce numéro de compte est invalide...");
        }
@@ -150,12 +141,11 @@ this.affectationForm.value.dateFin = this.datepipe.transform(this.affectationFor
 
 //recuperation de l'iri de UserAffectCompte BY Son Excellence WADE
 this.affectationForm.value.userAffectCompte = `${this.iriUserAffectCompte}${this.user.id}`;
-
+console.log(this.affectationForm.value);
 //recuperation de l'iri de Compte BY Son Excellence WADE
 this.affectationForm.value.compte = this.iriCompte;
 
-console.log(this.affectationForm.value);
-this.affectationService.affectCompte( this.affectationForm.value).subscribe(
+this.affectationService.affectCompte(this.affectationForm.value).subscribe(
   data => {
     
     if(data){
@@ -185,7 +175,7 @@ this.affectationService.affectCompte( this.affectationForm.value).subscribe(
          return this.router.navigateByUrl('');
        }else{
         //Afficher le message d'erreur avec la function Alerte BY Son Excellence WADE
-      alert(this.error); 
+      alert(this.error);
        }
   
 
@@ -232,5 +222,8 @@ onListUser(){
 
 
 }
+
+
+
 
 

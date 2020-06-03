@@ -79,7 +79,7 @@ compte;
 
 dataCompteByNumCompte(numCompte){
 
-  //recupereration du ninea saisie dans le formulaire By Son Excellence WADE;
+  //recupereration du NUMERO DE COMPTE saisie dans le formulaire By Son Excellence WADE;
   this.compteService.searchByNumCompte(numCompte).subscribe(
     data => {
       

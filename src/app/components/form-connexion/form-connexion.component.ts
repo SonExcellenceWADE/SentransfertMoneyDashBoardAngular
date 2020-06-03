@@ -82,12 +82,12 @@ private alertService: AlertService
          this.error = errormsgHttp.error.message;
 
          //verifier si le msg est invalid credentialpour personnaliser le msg d'alerte by Son Excellence WADE
-       if (this.error == "Invalid credentials.") {
+       if(this.error == "Invalid credentials.") {
          alert("login ou mot de passe incorrect !!!"); 
        }else{
 
         //Afficher les autre msg d'erreurs du backends
-         alert(this.error); 
+         alert(this.error);
        }
         
       }

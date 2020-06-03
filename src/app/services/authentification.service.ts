@@ -25,9 +25,7 @@ private currentUsersubject: BehaviorSubject<User>;
     
   //function de Connexion avec Angular 8 by Son Excellence
   login(username, password){
-
-    //dumper la route de connexion du backend Api by Son Excellence WADE
-    console.log(environment.loginUrl);
+    
     return this.http.post<User>(`${environment.loginUrl}/login_check`, {username, password}).
     pipe(map(user=>{
 

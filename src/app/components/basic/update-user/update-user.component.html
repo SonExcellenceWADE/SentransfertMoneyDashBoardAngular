@@ -2,7 +2,7 @@
   <mat-card class="formCompte">
     <mat-horizontal-stepper labelPosition="bottom" #stepper>
   
-      <mat-step [stepControl]="registerForm"  >
+      <mat-step [stepControl]="updateGroup"  >
   
           <form [formGroup]="imageForm">
   
@@ -10,9 +10,9 @@
              
                <!-- Username write block  By Son Excellence WADE-->
               <!-- <mat-form-field class="matinput-full-width" > -->
-                <div>
+               <!-- <div>
                     <img [src]="thumbnail" class="imagePreview">
-                </div>  
+                </div>  -->
                     <div class="form-group">
                         <div class="custom-file">
                             <input type="file" (change)="upload($event)" name="imageProfile" class="custom-file-input" id="customFile">

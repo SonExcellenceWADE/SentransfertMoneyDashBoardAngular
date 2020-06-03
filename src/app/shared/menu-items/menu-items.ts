@@ -34,7 +34,7 @@ const MENUITEMS = [
     label: 'Menu Principal',
     main: [
       {
-        state: 'dashboard',
+        state: 'Tableau de Bord',
         name: 'Tableau de Bord',
         type: 'link',
         icon: 'ti-home'

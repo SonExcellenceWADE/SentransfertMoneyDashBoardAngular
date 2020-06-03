@@ -1,5 +1,4 @@
-import { MatConfirmDialogComponent } from './../components/mat-confirm-dialog/mat-confirm-dialog.component';
-
+import { MatConfirmDialogComponent } from './../components/basic/mat-confirm-dialog/mat-confirm-dialog.component';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 

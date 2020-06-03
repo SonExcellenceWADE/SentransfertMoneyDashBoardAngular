@@ -46,9 +46,9 @@ constructor(
 
       let listComptes = data;
 
-      this.listData = new MatTableDataSource(listComptes);
+      this.listData = new MatTableDataSource(listComptes)['filteredData']['hydra:member'];
 
-      console.log(this.listData);
+      console.log(this.listData['filteredData']['hydra:member']);
 
       this.listData.sort = this.sort;
 
@@ -102,7 +102,7 @@ onCreate(){
 
 //Function  de Confirmation de suppression d'une ligne de Compte Partenaire BY Son Excellence WADE
 
-onDelete($key){
+onDelete(){
   this.dialogService.openConfirmDialog('Voulez-vous vraiment supprimer ?').afterClosed().subscribe(
 
     res=> {

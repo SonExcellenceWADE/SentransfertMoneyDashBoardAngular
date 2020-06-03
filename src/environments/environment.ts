@@ -3,11 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  loginUrl: "http://127.0.0.1:8000",
-  apiUrl: "http://127.0.0.1:8000/api"
+  
+ production: false,
+
+ //Url BackEnd BY SON EXCELLENCE WADE
+  loginUrl: 'http://127.0.0.1:8000',
+  apiUrl: 'http://127.0.0.1:8000/api',
+
 };
 
+ 
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

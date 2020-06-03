@@ -1,3 +1,4 @@
+import { AgmCoreModule } from '@agm/core';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -41,8 +42,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { JwtInterceptorService } from './helpers/jwt-interceptor.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-confirm-dialog.component';
 
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -54,8 +55,8 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     AuthComponent,
     FormConnexionComponent,
     ConnexionComponent,
-    MatConfirmDialogComponent,
-
+    
+  
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,12 @@ import { MatConfirmDialogComponent } from './components/mat-confirm-dialog/mat-c
     MatStepperModule,
     MatIconModule,
     MatSliderModule,
-    MaterialModule
+    MaterialModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCwA1WF41wXwpp9H9N0NOvpPnP4OgcycZU',
+      libraries: ['places']
+    })
+    
 
   ],
   providers: [

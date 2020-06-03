@@ -41,7 +41,7 @@ const routes: Routes = [
 
 
       {
-        path: 'faireDepot?compte/:id',
+        path: 'faireDepot/compte/:id',
         loadChildren: () => import('./depot/depot.module').then(m => m.DepotModule)
       },
 
@@ -56,7 +56,7 @@ const routes: Routes = [
       },
 
       {
-        path: 'affectationCompte?affect/:id',
+        path: 'affectationCompte/Useraffect/:id',
         loadChildren: () => import('./affectation-compte/affectation-compte.module').then(m => m.AffectationCompteModule)
       },
 
@@ -78,7 +78,13 @@ const routes: Routes = [
       {
         path: 'listTransaction',
         loadChildren: () => import('./list-transaction/list-transaction.module').then(m => m.ListTransactionModule)
-      }
+      },
+
+
+      {
+        path: '/deleteCompte/:id',
+        loadChildren: () => import('./delete-comptepartenaire/delete-compte-partenaire.module').then(m => m.DeleteComptePartenaireModule)
+      },
       
     ]
   }
