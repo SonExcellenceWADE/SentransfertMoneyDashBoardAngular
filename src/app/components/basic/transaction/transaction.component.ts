@@ -48,7 +48,7 @@ export class TransactionComponent implements OnInit {
       this.CompteService.findAllComptes().subscribe(
 
         data => {
-          this.comptes = data;
+          this.comptes = data['hydra:member'];
           console.log(this.comptes);
           
         }

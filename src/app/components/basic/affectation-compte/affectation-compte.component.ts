@@ -72,37 +72,37 @@ thumbail;
      }
    )
 
-  //Appel de Function de chargement des infos Comptes  By Son Excellence WADE
- this.dataCompteByNumCompte();
+
+
+  //Appel de Function de chargement des infos Partenaire By Son Excellence WADE
+ this.onChanges();
 }
 
-  /* onChanges(){
+  onChanges(){
   this.affectationForm.get('compte').valueChanges.subscribe(
     
   val => {
     if(val){
-      this.dataCompteByNumCompte();
+      this.dataCompteByNumCompte(val);
     } 
     }
  );
 } 
- */
+
   //Recuperation des donnees du Compte Partenaire par recherche de Nº de Compte By Son Excellence WADE
 
-dataCompteByNumCompte(){
+dataCompteByNumCompte(compte){
 
-  //recupereration du numero de compte saisie dans le formulaire By Son Excellence WADE;
-  this.compteService.searchByNumCompte(this.affectationForm.value.compte).subscribe(
+  //recupereration du ninea saisie dans le formulaire By Son Excellence WADE;
+  this.compteService.searchByNumCompte(compte).subscribe(
     data => {
       
       //On test si la recherche par Nº de Compte est vrai
        if(data["hydra:member"][0])
        {
-         
            //Recuperation de l'iri du Compte Partenaire
           this.iriCompte = data["hydra:member"][0]['@id'];
-          console.log(this.affectationForm.value.compte);
-          //console.log(this.iriCompte);
+          console.log(this.iriCompte);
        }else{
          alert("Ce numéro de compte est invalide...");
        }
@@ -222,8 +222,5 @@ onListUser(){
 
 
 }
-
-
-
 
 
