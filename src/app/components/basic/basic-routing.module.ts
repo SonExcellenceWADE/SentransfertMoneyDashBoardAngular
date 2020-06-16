@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -27,6 +28,11 @@ const routes: Routes = [
       {
         path: 'compte',
         loadChildren: () => import('./compte-partenaire/compte-partenaire.module').then(m => m.ComptePartenaireModule)
+      },
+
+      {
+        path: 'contrat',
+        loadChildren: () => import('./contrat/contrat.module').then(m => m.ContratModule)
       },
 
       {
@@ -85,6 +91,10 @@ const routes: Routes = [
         path: '/deleteCompte/:id',
         loadChildren: () => import('./delete-comptepartenaire/delete-compte-partenaire.module').then(m => m.DeleteComptePartenaireModule)
       },
+
+
+
+      
       
     ]
   }

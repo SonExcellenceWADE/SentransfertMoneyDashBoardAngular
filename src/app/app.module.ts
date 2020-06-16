@@ -1,6 +1,5 @@
+
 import { AgmCoreModule } from '@agm/core';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -43,7 +42,9 @@ import { DatePipe } from '@angular/common';
 import { JwtInterceptorService } from './helpers/jwt-interceptor.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
-import { environment } from 'src/environments/environment';
+
+
+
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { environment } from 'src/environments/environment';
     AuthComponent,
     FormConnexionComponent,
     ConnexionComponent,
+
     
   
   ],
@@ -88,7 +90,8 @@ import { environment } from 'src/environments/environment';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCwA1WF41wXwpp9H9N0NOvpPnP4OgcycZU',
       libraries: ['places']
-    })
+    }),
+
     
 
   ],

@@ -1,0 +1,64 @@
+<table align="right">
+    <tr>
+   <td> <button type="submit" mat-button  class="btn btn-outline-primary"  (click)="onExportClick()" >  
+        <mat-icon>print</mat-icon></button>
+    </td><br><br>
+</tr>
+</table>
+
+<div class="container" id ="element-to-export">
+<div class="movie-card">
+        <div class="movie-content">
+        
+   <table align="center">
+
+             <tr>  <th>CONTRAT DE PARTENARIAT</th>  </tr> <br><br>
+                
+    </table>
+
+               <table align="right" *ngFor="let contrat of contrats" >
+                <tbody>
+                <tr>
+               <td> <p> Fait à Dakar le {{ contrat.dateContrat | date:'dd/MM/yyyy' }} </p> </td> <br><br> 
+               </tr>
+               </tbody> 
+               </table>
+               
+                   
+Entre les soussignés: <br><br>
+La Société <b>SenTransfertMoney SARL</b> au Capital de <b>100 000 000 FCFA</b>, dont le siége social est <b>HLM GRAND YOFF</b>, enregistré au Registre  <br><br> 
+
+du Commerce et des Sociétés de <b>SN DKR 2020 A 02020 </b> sous le numéro de NINEA<b> 000110420 1R2</b>, <br><br> 
+Représenté par M. <b>ABDOULAYE WADE,</b><br> <br>
+
+ci-aprés désigne <b>[la Société SenTransfertMoney SARL]</b>,<br><br>
+
+d'une part,<br><br>
+
+<div *ngFor="let contrat of contrats"> 
+
+et La Société <b>{{ contrat.partenaire.raisonSociale}}</b> au capital de <b> {{contrat.partenaire.capital}} FCFA</b>, dont le siége sociale est <b>{{contrat.partenaire.adresse}}</b>, enregistré au Registre du Commerce et <br><br> 
+  
+des Sociétés de <b>{{contrat.partenaire.rccm}} </b> sous le numéro de NINEA<b> {{contrat.partenaire.ninea}}</b>, <br><br> 
+  <p *ngFor="let user of userPartner"> représentée par M. <b> {{user.prenom}} {{user.nom}}</b>,<br><br> </p>
+  
+  ci-aprés dénommée <b>[le Partenaire {{contrat.partenaire.raisonSociale}}]</b>, <br> <br>
+ 
+  d'autre part,<br><br>
+
+  il a été convenu ce qui suit: <br><br>
+
+ <b> Préambule </b><br><br>
+
+ <label> {{ contrat.termeContrat.termeAccord }} </label>
+
+
+</div>
+
+ </div>
+
+</div>
+</div>
+
+
+

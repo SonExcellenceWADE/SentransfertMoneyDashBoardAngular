@@ -89,6 +89,7 @@ const MENUITEMS = [
           state: 'listCompte',
           name: 'Liste des comptes'
         },
+
       ]
     },
   ]
@@ -184,13 +185,40 @@ const MENUITEMS = [
   label: 'Localisation des Agences',
   main: [
     {
-      state: 'map',
+      state: 'agenceMap',
       name: 'Agence Maps',
       type: 'link',
       icon: 'ti-location-pin'
     }
   ]
-}
+},
+
+
+
+//Contrat BY SON EXCELLENCE WADE
+
+{
+  label: 'Gestions des Contrats',
+  main: [
+    {
+      state: 'basic',
+      name: 'Contrat de partenariat',
+      type: 'sub',
+      icon: 'ti-id-badge',
+      children: [
+       
+        {
+          state: 'contrat',
+          name: 'Generer un contrat'
+        },
+
+      ]
+    },
+  ]
+},
+
+
+
 
 ];
 

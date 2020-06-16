@@ -30,9 +30,9 @@ submitted = false;
   private roles:RoleService,
   private route:Router,
   private UserService:UserService,
-   private formBuilder: FormBuilder, 
-   private alertService: AlertService,
-   public dialogRef:MatDialogRef<CreateuserComponent>) { }
+  private formBuilder: FormBuilder, 
+  private alertService: AlertService,
+  public dialogRef:MatDialogRef<CreateuserComponent>) { }
 
  ngOnInit() {
    //Au chargement  Je recuppere les roles du backend en faisnat un filtrage sur le Role de l' Admin System
@@ -103,7 +103,7 @@ this.UserService.createUser(this.registerForm.value)
          console.log(data);
          if(data){
            alert("Utilisateur ajouté avec succées...");
-           return this.route.navigateByUrl('/listUser');
+           return this.route.navigateByUrl('/basic/listUser');
          }
        },
        errormsgHttp=>{

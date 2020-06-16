@@ -251,7 +251,7 @@ onComptePartenaire()
           console.log(data);
           if(data){
             alert("Compte Partenaire ajouté avec succées...");
-            return this.route.navigateByUrl('/listCompte');
+            return this.route.navigateByUrl('basic/compte');
           }
         },
         errormsgHttp=>{
@@ -283,7 +283,7 @@ onComptePartenaire()
         console.log(data);
         if(data){
           alert("Compte Partenaire ajouté avec succées...");
-          return this.route.navigateByUrl('/listCompte');
+          return this.route.navigateByUrl('basic/compte');
         }
       },
       errormsgHttp=>{
