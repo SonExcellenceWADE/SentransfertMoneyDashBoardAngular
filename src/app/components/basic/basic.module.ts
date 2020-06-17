@@ -17,6 +17,7 @@ import { JwtInterceptorService } from '../../helpers/jwt-interceptor.service';
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -46,6 +47,7 @@ import { JwtInterceptorService } from '../../helpers/jwt-interceptor.service';
   ],
   declarations: [
     BasicComponent,
+   
   ],
   providers: [
     DatePipe,

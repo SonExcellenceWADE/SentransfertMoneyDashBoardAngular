@@ -1,3 +1,4 @@
+import { RecuTransactionComponent } from './components/basic/recu-transaction/recu-transaction.component';
 import { ContratComponent } from './components/basic/contrat/contrat.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,7 @@ import {AuthComponent} from './layouts/auth/auth.component';
 
 const routes: Routes = [
   { path: '',component: ConnexionComponent },
-
+  /* { path: 'basic/recuTransaction',component: RecuTransactionComponent}, */
   {
     path: '',
     component: AdminComponent,

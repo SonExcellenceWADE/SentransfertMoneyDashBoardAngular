@@ -1,0 +1,135 @@
+
+
+<table align="right">
+    <tr>
+   <td> <button type="submit" mat-button  class="btn btn-outline-primary"  value="Convert" (click)="convetToPDF()" >  
+        <mat-icon>print</mat-icon></button>
+    </td><br><br>
+</tr>
+</table>
+    
+<div class="container" id ="element-to-export">
+    <div class="movie-card">
+            <div class="movie-content">
+                                  
+
+    <table align="center"> <tr><th> Reçu d'envoi </th> </tr> </table>
+    
+    
+     <i class="fas fa-image"> <img src="/Users/mac/Desktop/sentranfertDashboard/src/assets/images/stm.png"  alt=""> </i> <br>
+     <p> Sen mbegté moy Sunu Yitté </p>    
+     
+          
+          <table align="left" *ngFor="let recu of transactions" > <tr>  Nº du reçu: <th> 0000{{recu.id}}STM </th></tr></table>
+          
+                                                                            
+                                                                            <table align="right" *ngFor="let date of transactions" > <tr> <td> Date d'envoi:  {{date.dateEnvoi | date:'dd/MM/yyyy' }}  </td></tr></table>
+                                                                                
+       <form> 
+
+
+        <div class="container" id ="element-to-export">
+            <div class="movie-card">
+                    <div class="movie-content">
+
+                        <table align="center"> <tr><th>  Informations de l'Envoyeur  </th></tr></table>
+
+<table class="table" *ngFor="let envoyeur of transactions" >                               
+      
+ <tr >
+<td> Pays :</td> <td> <b> Sénégal </b> </td> 
+ </tr>
+ <tr>
+ <td> Prénom : </td> <td> <b> {{envoyeur.prenomEnvoyeur}} </b> </td>
+
+ <td> Nom : </td> <td> <b> {{envoyeur.nomEnvoyeur}} </b> </td>
+
+ </tr>
+
+ <tr>
+                                       
+ <td > Nº de Téléphone : </td> <td> <b> {{envoyeur.telEnvoyeur}} </b> </td>
+
+ <td> Adresse : </td>
+
+ </tr> 
+            
+</table>
+
+ </div></div></div>
+
+
+
+ <div class="container" id ="element-to-export">
+    <div class="movie-card">
+            <div class="movie-content">
+
+                <table align="center"> <tr><th>  Informations du Bénéficaire </th></tr></table>
+
+<table class="table" *ngFor="let beneficiaire of transactions" >                               
+
+<tr >
+<td> Pays :</td> <td> <b> Sénégal </b> </td> 
+</tr>
+<tr>
+<td> Prénom : </td> <td> <b> {{beneficiaire.prenomBeneficiaire}}  </b> </td>
+
+<td> Nom : </td> <td> <b> {{beneficiaire.nomBeneficiaire}} </b> </td>
+
+</tr>
+
+<tr>
+                               
+<td > Nº de Téléphone : </td> <td> <b> {{beneficiaire.telBeneficiaire}} </b> </td>
+
+<td>  Nº de Carte d'identité : </td> <td> <b> {{beneficiaire.cinBeneficiaire}} </b> </td>
+
+</tr> 
+    
+</table>
+
+</div></div></div>
+
+
+<div class="container" id ="element-to-export">
+    <div class="movie-card">
+            <div class="movie-content">
+
+                <table align="center"> <tr><th>  Détails de Transaction </th></tr></table>
+
+<table class="table" *ngFor="let  transaction of transactions" >                               
+
+    <tr>
+        <td> Code d'envoi : </td> <td> <b> {{transaction.codeEnvoi}} </b> </td>
+        </tr>
+        
+        <tr>
+        <td> Montant Envoyé : </td> <td> <b> {{transaction.montantEnvoi}} FCFA </b> </td> 
+         </tr>  
+        
+         <tr>
+        <td> Commissions TTC: </td> <td> <b> {{transaction.fraisEnvoi}} FCFA </b> </td>
+        </tr> 
+        
+        <tr>
+        <td> Total: </td> <td> <b>  {{transaction.totalEnvoi}}  FCFA </b> </td>
+        </tr>
+        
+</table>
+
+</div></div></div>
+ 
+
+<table class="table" align="left">
+    <tr>
+    <td> <b> Caissier: ........................................................................................ </b> </td>  <td>  <b> Client: ..................................................................................................</b> </td>
+     </tr>
+    </table>  
+   
+ <table align="center"> <tr> <td>A conserver pour éviter toute tentative de fraude. </td> </tr> </table>
+   
+
+ 
+    </form>
+    </div></div></div>
+

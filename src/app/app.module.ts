@@ -1,4 +1,3 @@
-
 import { AgmCoreModule } from '@agm/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -56,6 +55,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     AuthComponent,
     FormConnexionComponent,
     ConnexionComponent,
+  
 
     
   

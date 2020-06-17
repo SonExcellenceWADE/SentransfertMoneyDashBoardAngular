@@ -35,5 +35,9 @@ export class TransactionService {
     return this.http.get<any>(`${environment.apiUrl}/transactions.json`);
   }
 
+  //function affichage Last ligne de tansaction BY Son Excellence WADE
 
+  findLastTransaction(){
+    return this.http.get<any>(`${environment.apiUrl}/transactions/list`);
+  }
 }

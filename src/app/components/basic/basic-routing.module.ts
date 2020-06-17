@@ -88,6 +88,11 @@ const routes: Routes = [
 
 
       {
+        path: 'recuTransaction',
+        loadChildren: () => import('./recu-transaction/recu-transaction.module').then(m => m.RecuTransactionModule)
+      },
+
+      {
         path: '/deleteCompte/:id',
         loadChildren: () => import('./delete-comptepartenaire/delete-compte-partenaire.module').then(m => m.DeleteComptePartenaireModule)
       },

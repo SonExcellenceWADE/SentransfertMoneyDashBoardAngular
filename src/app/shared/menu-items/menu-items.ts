@@ -195,7 +195,7 @@ const MENUITEMS = [
 
 
 
-//Contrat BY SON EXCELLENCE WADE
+/* //Contrat BY SON EXCELLENCE WADE
 
 {
   label: 'Gestions des Contrats',
@@ -215,9 +215,7 @@ const MENUITEMS = [
       ]
     },
   ]
-},
-
-
+}, */
 
 
 ];
@@ -228,7 +226,5 @@ export class MenuItems {
     return MENUITEMS;
   }
 
-  /*add(menu: Menu) {
-    MENUITEMS.push(menu);
-  }*/
+  
 }
